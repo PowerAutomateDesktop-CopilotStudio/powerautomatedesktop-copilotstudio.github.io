@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power Automate Desktop and Copilot Studio samples</title>
+<meta name="description" content="Tested, documented samples for Power Automate Desktop and Copilot Studio: a quick try first, then the design, the contract, the limits and a step-by-step setup.">
+<style>
+:root { --bg:#f6f7fb; --card:#ffffff; --ink:#1f2328; --muted:#59636e; --line:#d8dee4; --pad:#3f51b5; --cs:#00897b; --chip:#eef1f5; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0f1318; --card:#171c22; --ink:#e6edf3; --muted:#9aa7b4; --line:#2b333d; --pad:#8c9eff; --cs:#4db6ac; --chip:#222932; } }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif }
+main { max-width:1040px; margin:0 auto; padding:48px 16px 64px }
+h1 { font-size:2.1rem; line-height:1.2; margin:0 0 12px; font-weight:650 }
+.lead { color:var(--muted); font-size:1.1rem; max-width:760px; margin:0 0 32px }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:14px }
+.card h2 { margin:0; font-size:1.35rem }
+.bar { height:4px; border-radius:4px; width:48px }
+.pad .bar { background:var(--pad) } .cs .bar { background:var(--cs) }
+.pad h2 a { color:var(--pad) } .cs h2 a { color:var(--cs) }
+.card p { margin:0; color:var(--muted) }
+.stats { display:flex; gap:8px; flex-wrap:wrap }
+.chip { background:var(--chip); border-radius:999px; padding:3px 10px; font-size:.85rem }
+.latest { margin:0; padding-left:18px; font-size:.95rem }
+.latest:empty::before { content:"First samples coming soon."; color:var(--muted); margin-left:-18px }
+.links { margin-top:auto; display:flex; gap:16px; flex-wrap:wrap; font-size:.95rem }
+a { color:inherit; text-decoration:none } a:hover { text-decoration:underline }
+.links a { font-weight:600 }
+h3 { margin:40px 0 12px; font-size:1.1rem }
+.steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin:0; padding:0; list-style:none }
+.steps li { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; color:var(--muted); font-size:.95rem }
+.steps b { color:var(--ink); display:block; margin-bottom:4px }
+footer { margin-top:48px; color:var(--muted); font-size:.9rem }
+</style>
+</head>
+<body>
+<main>
+  <h1>Power Automate Desktop and Copilot Studio samples</h1>
+  <p class="lead">Tested, documented samples for consultants. Each one starts with the quickest way to see it work,
+    then gives the design and the alternatives it beat, the contract of its reusable parts, its limits and when it was tested.</p>
+
+  <div class="grid">
+    <section class="card pad" data-catalogue="pad-samples/samples.json">
+      <div class="bar"></div>
+      <h2><a href="pad-samples/">Power Automate Desktop samples</a></h2>
+      <p>Desktop flows as Robin code: paste them into the designer, see what to create before the paste.</p>
+      <div class="stats"></div>
+      <ul class="latest"></ul>
+      <div class="links"><a href="pad-samples/">Gallery</a><a href="pad-samples/TECHNIQUES/">By technique</a>
+        <a href="https://github.com/PowerAutomateDesktop-CopilotStudio/pad-samples">Repository</a></div>
+    </section>
+    <section class="card cs" data-catalogue="copilot-studio-samples/samples.json">
+      <div class="bar"></div>
+      <h2><a href="copilot-studio-samples/">Copilot Studio samples</a></h2>
+      <p>Agents and workflows as files: instructions, skills, tools, knowledge, typed workflows.</p>
+      <div class="stats"></div>
+      <ul class="latest"></ul>
+      <div class="links"><a href="copilot-studio-samples/">Gallery</a><a href="copilot-studio-samples/TECHNIQUES/">By technique</a>
+        <a href="https://github.com/PowerAutomateDesktop-CopilotStudio/copilot-studio-samples">Repository</a></div>
+    </section>
+  </div>
+
+  <h3>Every sample, the same way</h3>
+  <ol class="steps">
+    <li><b>1. Quick try</b>The path that asks the least: one block, a few minutes, nothing to create.</li>
+    <li><b>2. Full version</b>Everything in place, with what each step asks you to create.</li>
+    <li><b>3. In your own build</b>The reusable part, its contract and its limits.</li>
+  </ol>
+
+  <footer>MIT license · HyperAutomatisation and the contributors ·
+    <a href="https://github.com/PowerAutomateDesktop-CopilotStudio">github.com/PowerAutomateDesktop-CopilotStudio</a></footer>
+</main>
+<script>
+// Counts and latest samples, read from each collection's catalogue. Without it the page stays as written.
+document.querySelectorAll("[data-catalogue]").forEach(async card => {
+  try {
+    const r = await fetch(card.dataset.catalogue, { cache: "no-store" });
+    if (!r.ok) return;
+    const all = (await r.json()).samples || [];
+    const cats = new Set(all.map(s => s.category)), tech = new Set(all.flatMap(s => s.techniques || []));
+    const chip = t => { const s = document.createElement("span"); s.className = "chip"; s.textContent = t; return s; };
+    const stats = card.querySelector(".stats");
+    stats.append(chip(all.length + (all.length === 1 ? " sample" : " samples")), chip(cats.size + (cats.size === 1 ? " category" : " categories")), chip(tech.size + " techniques"));
+    const base = card.dataset.catalogue.split("/")[0] + "/";
+    const list = card.querySelector(".latest");
+    all.slice().sort((a, b) => (b.released || "").localeCompare(a.released || "")).slice(0, 3).forEach(s => {
+      const li = document.createElement("li"), a = document.createElement("a");
+      a.href = base + s.page.replace(/README\.md$/, "");
+      a.textContent = s.title;
+      li.append(a, document.createTextNode(" · v" + s.version));
+      list.append(li);
+    });
+  } catch (e) { /* the static text stays */ }
+});
+</script>
+</body>
+</html>
