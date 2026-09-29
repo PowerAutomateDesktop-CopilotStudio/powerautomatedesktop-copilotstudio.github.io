@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: A private request
+    url: https://www.linkedin.com/in/franckmongo/
+    about: Write to Franck Mongo, who runs Anne, on LinkedIn.
   - name: Power Automate Desktop samples
     url: https://powerautomatedesktop-copilotstudio.github.io/pad-samples/
     about: Browse the published Power Automate Desktop samples.

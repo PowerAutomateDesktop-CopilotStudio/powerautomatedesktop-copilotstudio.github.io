@@ -8,6 +8,7 @@ body:
       value: |
         Anne reads every challenge. The ones that teach something useful become public samples, for e-learning purposes.
         **This issue is public: describe the task without any personal or company data.**
+        For a private request, write to Franck Mongo on LinkedIn: https://www.linkedin.com/in/franckmongo/
   - type: dropdown
     id: product
     attributes:
