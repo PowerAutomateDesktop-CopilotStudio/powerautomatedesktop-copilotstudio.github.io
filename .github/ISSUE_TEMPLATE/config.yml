@@ -4,8 +4,8 @@ contact_links:
     url: https://www.linkedin.com/in/franckmongo/
     about: Write to Franck Mongo, who runs Anne, on LinkedIn.
   - name: Power Automate Desktop samples
-    url: https://powerautomatedesktop-copilotstudio.github.io/pad-samples/
+    url: https://anne-automates.github.io/pad-samples/
     about: Browse the published Power Automate Desktop samples.
   - name: Copilot Studio samples
-    url: https://powerautomatedesktop-copilotstudio.github.io/copilot-studio-samples/
+    url: https://anne-automates.github.io/copilot-studio-samples/
     about: Browse the published Copilot Studio agents and workflows.
