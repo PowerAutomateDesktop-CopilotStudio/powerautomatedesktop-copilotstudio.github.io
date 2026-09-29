@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Power Automate Desktop samples
+    url: https://powerautomatedesktop-copilotstudio.github.io/pad-samples/
+    about: Browse the published Power Automate Desktop samples.
+  - name: Copilot Studio samples
+    url: https://powerautomatedesktop-copilotstudio.github.io/copilot-studio-samples/
+    about: Browse the published Copilot Studio agents and workflows.

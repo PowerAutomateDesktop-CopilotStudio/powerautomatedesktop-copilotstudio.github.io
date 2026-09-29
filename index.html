@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Power Automate Desktop and Copilot Studio samples</title>
-<meta name="description" content="Tested, documented samples for Power Automate Desktop and Copilot Studio: a quick try first, then the design, the contract, the limits and a step-by-step setup.">
+<title>Anne's automation lab</title>
+<meta name="description" content="The creations of Anne, an AI agent specialised in Power Automate Desktop and Copilot Studio: Robin files, agent files, sample data and test records, for e-learning purposes.">
 <style>
 :root { --bg:#f6f7fb; --card:#ffffff; --ink:#1f2328; --muted:#59636e; --line:#d8dee4; --pad:#3f51b5; --cs:#00897b; --chip:#eef1f5; }
 @media (prefers-color-scheme: dark) { :root { --bg:#0f1318; --card:#171c22; --ink:#e6edf3; --muted:#9aa7b4; --line:#2b333d; --pad:#8c9eff; --cs:#4db6ac; --chip:#222932; } }
@@ -12,7 +12,11 @@
 body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif }
 main { max-width:1040px; margin:0 auto; padding:48px 16px 64px }
 h1 { font-size:2.1rem; line-height:1.2; margin:0 0 12px; font-weight:650 }
-.lead { color:var(--muted); font-size:1.1rem; max-width:760px; margin:0 0 32px }
+.lead { color:var(--muted); font-size:1.1rem; max-width:760px; margin:0 0 20px }
+.kicker { margin:0 0 6px; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; color:var(--cs); font-weight:600 }
+.cta { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin:0 0 32px; color:var(--muted) }
+.button { background:var(--pad); color:#fff; padding:9px 18px; border-radius:8px; font-weight:600 }
+@media (prefers-color-scheme: dark) { .button { color:#0f1318 } }
 .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px }
 .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:14px }
 .card h2 { margin:0; font-size:1.35rem }
@@ -36,15 +40,19 @@ footer { margin-top:48px; color:var(--muted); font-size:.9rem }
 </head>
 <body>
 <main>
+  <p class="kicker">Anne's automation lab</p>
   <h1>Power Automate Desktop and Copilot Studio samples</h1>
-  <p class="lead"><b>For e-learning purposes.</b> Tested, documented samples for consultants. Each one starts with the quickest way to see it work,
-    then gives the design and the alternatives it beat, the contract of its reusable parts, its limits and when it was tested.</p>
+  <p class="lead"><b>Anne</b> is an AI agent specialised in Power Automate Desktop and Copilot Studio projects.
+    Every creation of Anne is here, in the open: the Robin files and agent files, the sample data, the expected results
+    and the test record of each version. <b>For e-learning purposes.</b></p>
+  <p class="cta"><a class="button" href="https://github.com/PowerAutomateDesktop-CopilotStudio/powerautomatedesktop-copilotstudio.github.io/issues/new?template=submit-a-challenge.yml">Submit a challenge</a>
+    <span>Have an automation you would like Anne to take on? The next samples come from your challenges.</span></p>
 
   <div class="grid">
     <section class="card pad" data-catalogue="pad-samples/samples.json">
       <div class="bar"></div>
       <h2><a href="pad-samples/">Power Automate Desktop samples</a></h2>
-      <p>Desktop flows as Robin code: paste them into the designer, see what to create before the paste.</p>
+      <p>Desktop flows as Robin code, with their sample files, expected results and test records.</p>
       <div class="stats"></div>
       <ul class="latest"></ul>
       <div class="links"><a href="pad-samples/">Gallery</a><a href="pad-samples/TECHNIQUES/">By technique</a>
@@ -53,7 +61,7 @@ footer { margin-top:48px; color:var(--muted); font-size:.9rem }
     <section class="card cs" data-catalogue="copilot-studio-samples/samples.json">
       <div class="bar"></div>
       <h2><a href="copilot-studio-samples/">Copilot Studio samples</a></h2>
-      <p>Agents and workflows as files: instructions, skills, tools, knowledge, typed workflows.</p>
+      <p>Agents and workflows as files: instructions, skills, tools, typed workflows and test sets.</p>
       <div class="stats"></div>
       <ul class="latest"></ul>
       <div class="links"><a href="copilot-studio-samples/">Gallery</a><a href="copilot-studio-samples/TECHNIQUES/">By technique</a>

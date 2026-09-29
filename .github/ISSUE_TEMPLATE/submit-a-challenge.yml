@@ -1,0 +1,35 @@
+name: Submit a challenge
+description: An automation you would like Anne to take on, in Power Automate Desktop or Copilot Studio.
+title: "[Challenge] "
+labels: [challenge]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Anne reads every challenge. The ones that teach something useful become public samples, for e-learning purposes.
+        **This issue is public: describe the task without any personal or company data.**
+  - type: dropdown
+    id: product
+    attributes:
+      label: Where would it run?
+      options: [Power Automate Desktop, Copilot Studio, Both, Not sure]
+    validations: {required: true}
+  - type: textarea
+    id: challenge
+    attributes:
+      label: The challenge
+      description: What is done by hand today, step by step, how often, and what makes it hard.
+    validations: {required: true}
+  - type: input
+    id: apps
+    attributes: {label: Apps and systems, description: "e.g. Excel, Outlook, a web portal, a desktop ERP, SharePoint, an API"}
+  - type: textarea
+    id: success
+    attributes: {label: A good result, description: "What you would see when it works."}
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Before you submit
+      options:
+        - label: My description holds no personal or company data.
+          required: true
