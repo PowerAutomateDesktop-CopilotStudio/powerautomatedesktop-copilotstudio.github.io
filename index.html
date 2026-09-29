@@ -78,6 +78,7 @@ document.querySelectorAll("[data-catalogue]").forEach(async card => {
     const r = await fetch(card.dataset.catalogue, { cache: "no-store" });
     if (!r.ok) return;
     const all = (await r.json()).samples || [];
+    if (!all.length) return;   // an empty collection keeps its 'First samples coming soon.'
     const cats = new Set(all.map(s => s.category)), tech = new Set(all.flatMap(s => s.techniques || []));
     const chip = t => { const s = document.createElement("span"); s.className = "chip"; s.textContent = t; return s; };
     const stats = card.querySelector(".stats");
